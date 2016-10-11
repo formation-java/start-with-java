@@ -1,7 +1,5 @@
 package fr.blablacar.server;
 
-import java.awt.Desktop;
-
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -18,9 +16,13 @@ public class BlaBlaServer {
 
 		ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
-		ServletContextHandler context = new ServletContextHandler(server, "/*");
-		context.addServlet(servlet, "/*");
-
+		ServletContextHandler context = new ServletContextHandler(server, "/api/*");
+		context.addServlet(servlet, "/api/*");
+		
+		ServletHolder baseServlet = new ServletHolder(new BaseServlet());
+		ServletContextHandler baseContext = new ServletContextHandler(server, "/*");
+		baseContext.addServlet(baseServlet, "/*");
+		
 		server.start();
 		// makes the main thread wait for server thread terminiation
 		server.join();
