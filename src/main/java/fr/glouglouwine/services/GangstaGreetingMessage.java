@@ -1,4 +1,4 @@
-package fr.blablacar.services;
+package fr.glouglouwine.services;
 
 import java.time.LocalDateTime;
 

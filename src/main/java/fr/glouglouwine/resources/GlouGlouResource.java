@@ -1,4 +1,4 @@
-package fr.blablacar.resources;
+package fr.glouglouwine.resources;
 
 import java.util.logging.Logger;
 
@@ -9,15 +9,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import fr.blablacar.services.GreetingStyle;
-import fr.blablacar.services.GreetingService;
+import fr.glouglouwine.services.GreetingStyle;
+import fr.glouglouwine.services.GreetingService;
 
-@Path("/blabla")
-public class BlaBlaResource {
+@Path("/glouglou")
+public class GlouGlouResource {
 
-	private Logger logger = Logger.getLogger(BlaBlaResource.class.getName());
+	private Logger logger = Logger.getLogger(GlouGlouResource.class.getName());
 
-	public BlaBlaResource() {
+	public GlouGlouResource() {
 		logger.info("Resource initialized");
 	}
 

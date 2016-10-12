@@ -1,4 +1,4 @@
-package fr.blablacar.services;
+package fr.glouglouwine.services;
 
 public interface Greeting {
 	

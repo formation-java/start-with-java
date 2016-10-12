@@ -1,4 +1,4 @@
-package fr.blablacar.resources;
+package fr.glouglouwine.resources;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
