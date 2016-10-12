@@ -10,16 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class BaseServlet extends HttpServlet {
 
-	private static int magicNumber = 0;
-
-	public BaseServlet() {
-		super();
-		magicNumber++;
-	}
-
 	private static final long serialVersionUID = 1L;
 
-	private long numberOfCall = 0;
+	private Long numberOfCall = 0L;
 
 	private Logger logger = Logger.getLogger(BaseServlet.class.getCanonicalName());
 
@@ -31,10 +24,15 @@ public class BaseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/plain");
 		String xIdBlabla = req.getHeader("X-Id-Blabla");
-		String message = "I am " + magicNumber + "executing in thread " + Thread.currentThread().getId()
-				+ " and I've been called [" + (numberOfCall++) + "] time from " + xIdBlabla + "\n";
+		incrementCalls();
+		String message = "I am [" + this + "] executing in thread " + Thread.currentThread().getId()
+				+ " and I've been called [" + numberOfCall + "] time from " + xIdBlabla + "\n";
 		logger.info(message);
 		resp.getWriter().write(message);
+	}
+
+	private synchronized void incrementCalls() {
+			numberOfCall++;	
 	}
 
 }
