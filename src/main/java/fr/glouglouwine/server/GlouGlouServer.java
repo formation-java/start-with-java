@@ -16,12 +16,11 @@ public class GlouGlouServer {
 
 		ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
-		ServletContextHandler context = new ServletContextHandler(server, "/api/*");
+		ServletContextHandler context = new ServletContextHandler(server, "/*");
 		context.addServlet(servlet, "/api/*");
 		
 		ServletHolder baseServlet = new ServletHolder(new BaseServlet());
-		ServletContextHandler baseContext = new ServletContextHandler(server, "/*");
-		baseContext.addServlet(baseServlet, "/*");
+		context.addServlet(baseServlet, "/*");
 		
 		server.start();
 		// makes the main thread wait for server thread terminiation
