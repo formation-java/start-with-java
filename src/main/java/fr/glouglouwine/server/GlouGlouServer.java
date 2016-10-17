@@ -14,14 +14,14 @@ public class GlouGlouServer {
 		ResourceConfig config = new ResourceConfig();
 		config.packages("fr.glouglouwine", "com.jersey.jaxb", "com.fasterxml.jackson.jaxrs.json");
 
-		ServletHolder servlet = new ServletHolder(new ServletContainer(config));
-
 		ServletContextHandler context = new ServletContextHandler(server, "/*");
-		context.addServlet(servlet, "/api/*");
-		
+
 		ServletHolder baseServlet = new ServletHolder(new BaseServlet());
 		context.addServlet(baseServlet, "/*");
-		
+
+		ServletHolder apiServlet = new ServletHolder(new ServletContainer(config));
+		context.addServlet(apiServlet, "/api/*");
+
 		server.start();
 		// makes the main thread wait for server thread terminiation
 		server.join();
